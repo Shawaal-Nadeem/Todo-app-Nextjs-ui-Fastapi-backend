@@ -1,6 +1,6 @@
 import { ButtonOperations } from "@/components/allbuttons"
-import { GetTodos } from "./api/getTodos"
-
+import { GetTodos } from "../components/getTodos"
+// import { PostTodo } from "@/components/createTodos"
 
 export default function Home() {
   return (
@@ -9,7 +9,8 @@ export default function Home() {
    <div className=" flex justify-around items-center w-full mt-10 ">
    <ButtonOperations/>
         </div>
-        
+        {/* <PostTodo/> */}
+        <GetTodos/>
    </div> 
   )
 }

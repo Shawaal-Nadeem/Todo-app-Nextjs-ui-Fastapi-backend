@@ -11,18 +11,14 @@ export const GetTodos=async()=>{
     const todosArr = await res.json()
     console.log(todosArr)
            
-
-       
-
     return(
         <>
      {todosArr.map((todo:any)=>(
-        <div key={todo.id}>
-            {todo.title}
+        <div key={todo.id} className=" mt-10">
+            {todo.title}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             {todo.description}
             </div>
     ))}     
         </>
     )
 }
-
