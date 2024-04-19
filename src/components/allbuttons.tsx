@@ -1,8 +1,6 @@
 'use client'
 import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
-import { GetTodos } from "@/components/getTodos"
-// import { CreateTodo } from "./createTodos"
 
 export const ButtonOperations=()=>{
 
