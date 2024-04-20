@@ -1,33 +1,45 @@
 'use client'
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
 import { Button } from "@/components/ui/button"
-
+import { AddTodo } from "./createTodos"
+import { ReadTodos } from "./readTodos"
+import { context } from "@/context/appContext";
+import { UpdateTodo } from "./updateTodos"
 export const ButtonOperations=()=>{
+const getContext = useContext(context)
+// const operation = getContext.operation
+const setOperation = getContext.setOperation
 
-const [operation,setOperation]=useState('');
+const [state, setState] = useState('');
+
 useEffect(()=>{
-    if(operation==='create'){
+    if(state==='create'){
         console.log('create')
     }
-    else if(operation==='read'){
+    else if(state==='read'){
         console.log('read')
     }
-    else if(operation==='update'){
+    else if(state==='update'){
         console.log('update')
     }  
-    else if(operation==='delete'){
+    else if(state==='delete'){
         console.log('delete')
     }
 
-},[operation])
+},[state])
     return(
         <>
-          <Button onClick={()=>{setOperation('create')}}>ADD Todo</Button>
-          {/* <Button onClick={()=>{setOperation('read')}} variant={"secondary"}>All Todos</Button> */}
-          <Button onClick={()=>{setOperation('update')}} variant={"secondary1"}>Edit Todo</Button>
-          <Button onClick={()=>{setOperation('delete')}} variant={"destructive"}>Delete Todo</Button>
-        {/* {operation==='read' ? <GetTodos/>:null}  Rendering again n again */}
-        {/* {operation==='create' ? <CreateTodo/>:null} */}
+        <div className=" flex justify-around items-center w-full mt-10 ">
+          <Button onClick={()=>{setState('create')}}>ADD Todo</Button>
+          <Button onClick={()=>{setOperation('read'), setState('read')}} variant={"secondary"}>All Todos</Button>
+          <Button onClick={()=>{setState('update')}} variant={"secondary1"}>Edit Todo</Button>
+          <Button onClick={()=>{setState('delete')}} variant={"destructive"}>Delete Todo</Button>
+        </div>
+        <div>
+        {state==='read' ? <ReadTodos/>:null}
+        {state === 'create' ? <AddTodo/>:null}
+        {state === 'update' ? <UpdateTodo/>:null}
+        </div>
         </>
     )
 }
